@@ -1,0 +1,183 @@
+/* Sticky Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+  transition: box-shadow var(--transition-normal);
+  width: 100%;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 4px 16px rgba(8, 11, 12, 0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  width: 100%;
+}
+
+/* Brand Lockup: [Official maxr. logo] FOUNDATION */
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 1.8vw, 12px);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  height: clamp(32px, 4vw, 40px);
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-foundation-text {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(12.5px, 1.4vw, 14.5px);
+  font-weight: 600;
+  letter-spacing: clamp(0.18em, 0.3vw, 0.24em);
+  text-transform: uppercase;
+  color: #1a2a24;
+  line-height: 1;
+  padding-left: clamp(10px, 1.4vw, 14px);
+  border-left: 1.5px solid #cfdad5;
+  white-space: nowrap;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 32px);
+}
+
+.nav-link {
+  font-size: clamp(14px, 1.2vw, 15px);
+  font-weight: 500;
+  color: var(--color-text-body);
+  position: relative;
+  padding-block: 6px;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--color-primary-dark);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-mint);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.header-wa-btn {
+  font-size: 13.5px;
+  padding: 8px 16px;
+}
+
+.mobile-toggle {
+  display: none;
+  color: var(--color-primary-dark);
+  padding: 6px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Mobile Drawer */
+.mobile-drawer {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .header-wa-btn {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-drawer {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    border-bottom: 2px solid var(--color-mint);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 280ms ease;
+  }
+
+  .mobile-drawer.is-open {
+    max-height: 420px;
+  }
+
+  .mobile-drawer-content {
+    padding-block: 20px;
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .mobile-nav-links a {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+  }
+
+  .mobile-nav-links a:hover {
+    background-color: var(--color-offwhite);
+    color: var(--color-mint-dark);
+  }
+
+  .mobile-drawer-footer {
+    padding-inline: 12px;
+  }
+
+  .mobile-wa-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
